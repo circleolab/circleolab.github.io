@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-08-29T08:51:45.635Z</updated>
+  <updated>2020-08-29T08:54:53.004Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Github+Hexo博客搭建 （一）</title>
-    <link href="http://yoursite.com/2020/08/29/Github-Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%EF%BC%88%E4%B8%80%EF%BC%89/"/>
-    <id>http://yoursite.com/2020/08/29/Github-Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <title>Github+Hexo博客搭建</title>
+    <link href="http://yoursite.com/2020/08/29/Github-Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    <id>http://yoursite.com/2020/08/29/Github-Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</id>
     <published>2020-08-29T05:06:48.000Z</published>
-    <updated>2020-08-29T08:51:45.635Z</updated>
+    <updated>2020-08-29T08:54:53.004Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;Github创建个人仓库&quot;&gt;&lt;a href=&quot;#Github创建个人仓库&quot; class=&quot;headerlink&quot; title=&quot;Github创建个人仓库&quot;&gt;&lt;/a&gt;Github创建个人仓库&lt;/h2&gt;&lt;p&gt;新建Repositories，并将Repository name设置为 name.github.io的格式。每个Github账号可以设置一个这种仓库，可以直接通过name.github.io访问页面。&lt;br&gt;我的仓库设置为circleolab.github.io。&lt;/p&gt;
@@ -43,7 +43,7 @@
     <link href="http://yoursite.com/2020/08/28/Github-%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
     <id>http://yoursite.com/2020/08/28/Github-%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</id>
     <published>2020-08-28T11:35:17.000Z</published>
-    <updated>2020-08-28T13:29:49.911Z</updated>
+    <updated>2020-08-29T08:54:36.474Z</updated>
     
     
     <summary type="html">&lt;p&gt;本博客参照了&lt;a href=&quot;https://docs.github.com/en/github/getting-started-with-github&quot;&gt;Github Docs&lt;/a&gt;，主要总结Github代码托管的基本方式。&lt;/p&gt;
@@ -52,10 +52,12 @@
     
     
     
-    <category term="Github仓库管理" scheme="http://yoursite.com/categories/Github%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86/"/>
+    <category term="养成良好习惯" scheme="http://yoursite.com/categories/%E5%85%BB%E6%88%90%E8%89%AF%E5%A5%BD%E4%B9%A0%E6%83%AF/"/>
     
     
     <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
+    
+    <category term="github desktop" scheme="http://yoursite.com/tags/github-desktop/"/>
     
   </entry>
   
