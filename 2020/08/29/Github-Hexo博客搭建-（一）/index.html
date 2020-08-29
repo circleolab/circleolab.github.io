@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">912</span>
+            <span class="post-count">1.3k</span>
         </span>
     </span>
 
@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">4 分钟</span>
+            <span class="post-count">5 分钟</span>
         </span>
     </span>
 </div>
@@ -133,9 +133,25 @@
 再温习一下Hexo的命令格式：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g #安装Hexo</span><br><span class="line">npm update hexo -g #升级</span><br><span class="line">hexo init #初始化博客</span><br><span class="line"></span><br><span class="line">命令简写</span><br><span class="line">hexo n &quot;我的博客&quot; &#x3D;&#x3D; hexo new &quot;我的博客&quot; #新建文章</span><br><span class="line">hexo g &#x3D;&#x3D; hexo generate #生成</span><br><span class="line">hexo s &#x3D;&#x3D; hexo server #启动服务预览</span><br><span class="line">hexo d &#x3D;&#x3D; hexo deploy #部署</span><br><span class="line"></span><br><span class="line">hexo server #Hexo会监视文件变动并自动更新，无须重启服务器</span><br><span class="line">hexo server -s #静态模式</span><br><span class="line">hexo server -p 5000 #更改端口</span><br><span class="line">hexo server -i 192.168.1.1 #自定义 IP</span><br><span class="line">hexo clean #清除缓存，若是网页正常情况下可以忽略这条命令</span><br></pre></td></tr></table></figure></li>
 <li>安装Hexo部署git的插件：<br>在终端中输入：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
 <li>部署博客到github<br>在终端中输入：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo g </span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-</li>
+第一次部署会弹出一个登录窗口，登录Github账号即可。<br>到此，如果不需要绑定自己的域名的情况下，已经可以输入username.github.io访问博客页面了。</li>
 </ol>
+<h2 id="绑定Godaddy注册的域名"><a href="#绑定Godaddy注册的域名" class="headerlink" title="绑定Godaddy注册的域名"></a>绑定Godaddy注册的域名</h2><p>由于暂时不想绑定域名，所以就先把教程贴在这儿，以后有需要再绑定。</p>
+<p>注册DNSpod，添加域名，添加2条A记录，默认填写Github官方ip</p>
+<ul>
+<li>192.30.252.153</li>
+<li>192.30.252.154</li>
+<li>CNAME 记录值为name.github.io</li>
+<li>更改 GoDaddy 的 Nameservers 为 DNSpod 的 NameServers。1、点击你的账户，管理我的域名。2、点击域名。3、将GoDaddy的Nameservers更改成：<br>F1G1NS1.DNSPOD.NET<br>F1G1NS2.DNSPOD.NET</li>
+</ul>
+<p>到此结束。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>建立整个博客的思路如下：</p>
+<ul>
+<li>通过Hexo框架+主题，通过Markdown格式加部分Hexo的语法，将书写的博客解析成Html文件夹。</li>
+<li>本地安装Git,并配置好本地SSH Key与Github账号之间的关联。</li>
+<li>通过hexo-deployer-git插件，便捷地将解析好的Html部署到name.github.io上。在浏览器中输入name.github.io即可访问生成好的博客。（若只想部署本地博客，则使用hexo s）</li>
+<li>注册自己的域名，将自己的域名解析为name.github.io的ip,这样输入circleolab.com则会自动跳转到博客页面。</li>
+<li>未来可以将网站部署到国内服务器，通过FTP将HTML文件上传，即可直接访问。域名解析需要重定义。</li>
+</ul>
 <h3 id="文章参考"><a href="#文章参考" class="headerlink" title="文章参考"></a>文章参考</h3><blockquote><p>使用Github Pages建独立博客</p>
 <footer><strong>beiyuu</strong><cite><a target="_blank" rel="noopener" href="http://beiyuu.com/github-pages">beiyuu.com/github-pages</a></cite></footer></blockquote>
 <blockquote><p>GitHub+Hexo 搭建个人网站详细教程</p>
