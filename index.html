@@ -128,47 +128,11 @@
     <div class="article-entry" itemprop="articleBody">
        
   <h2 id="Github创建个人仓库"><a href="#Github创建个人仓库" class="headerlink" title="Github创建个人仓库"></a>Github创建个人仓库</h2><p>新建Repositories，并将Repository name设置为 name.github.io的格式。每个Github账号可以设置一个这种仓库，可以直接通过name.github.io访问页面。<br>我的仓库设置为circleolab.github.io。</p>
-<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>由于之前安装Hexo的时候就安装了，所以这里就不用安装了，在终端中输入 git version,我得到了版本号：git version 2.28.0.windows.1。<br>与github desktop的原理类似，这里也需要将git与github账号绑定，通过命令行的方式进行发布。</p>
-<ol>
-<li><p>检查SSH Keys的配置（windows）<br>在Git Bash中，输入（如果是linux，直接在terminal中输入即可）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~&#x2F;.sh 第一次创建会提示&quot;No such file or directory&quot;,若不是则执行第二步，是则跳过。</span><br></pre></td></tr></table></figure></li>
-<li><p>备份和移除原来的ssh Key设置:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ls </span><br><span class="line">config	id_rsa	id_rsa.pub	known_hosts 参考的文章中是这么写的，未校验。</span><br><span class="line">mkdir key_backup</span><br><span class="line">cp id_rsa* key_backup</span><br><span class="line">rm id_rsa*</span><br></pre></td></tr></table></figure></li>
-<li><p>生成新的SSH Key:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C 20circle22@gmail.com</span><br><span class="line">Generating public&#x2F;private rsa key pair.</span><br><span class="line">Enter file in which to save the key (&#x2F;c&#x2F;Users&#x2F;circl&#x2F;.ssh&#x2F;id_rsa) 连续按3次enter.</span><br></pre></td></tr></table></figure>
-<p>出现了下图，表示本地生成SSH密钥成功。<br><img src="https://i.loli.net/2020/08/29/ipDRO9yKsM7YgoH.png" alt="捕获2.PNG"></p>
-</li>
-<li><p>添加SSH Key到 Github<br>本地配置好了SSH key后，需要将其添加到Github上，以完成配置。</p>
-<ul>
-<li>本地id_rsa.pub文件用txt打开，复制。（我的文件目录为：/c/User/circl/.ssh/id_rsa)</li>
-<li>网页登陆Github，Account→ Settings→ SSH and GPG keys→ New SSH Key,设置好title,粘贴key → Add SSH key</li>
-</ul>
-</li>
-<li><p>测试连接<br>在Git Bash中,输入以下命令，无需更改。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@GitHub.com</span><br></pre></td></tr></table></figure>
-<p>然后可能会回复：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host &#39;github.com (13.250.177.223)&#39; can&#39;t be established.</span><br><span class="line">RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.</span><br><span class="line">Are you sure you want to continue connecting (yes&#x2F;no&#x2F;[fingerprint])? yes</span><br><span class="line">Warning: Permanently added &#39;github.com,13.250.177.223&#39; (RSA) to the list of known hosts.</span><br></pre></td></tr></table></figure>
-<p>输入yes,后如果看到下面回复就成功了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hi circleolab! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置用户信息<br>虽然已经将本地SSH链接到Github了，但还需要完善下个人信息。Git将会根据这些信息来记录提交，Github也将根据这些信息进行权限判断。<br>在Git Bash中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name + &quot;circleolab&quot; &#x2F;&#x2F;Github的用户名（打&quot;&quot;)</span><br><span class="line">git config --global user.email + 注册Github时所用的邮箱（打&quot;&quot;)</span><br></pre></td></tr></table></figure>
-<p>至此已经将Git本地配置好了，建立了与Github之间的联系。</p>
-</li>
-</ol>
-<h2 id="将Hexo与Github关联起来"><a href="#将Hexo与Github关联起来" class="headerlink" title="将Hexo与Github关联起来"></a>将Hexo与Github关联起来</h2><ol>
-<li>打开博客下的_config.yml文件，在# Deployment项目下作如下修改，并保存：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: 这里填入你之前在GitHub上创建仓库的完整路径，记得加上 .git 如：https:&#x2F;&#x2F;github.com&#x2F;circleolab&#x2F;circleolab.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
-再温习一下Hexo的命令格式：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g #安装Hexo</span><br><span class="line">npm update hexo -g #升级</span><br><span class="line">hexo init #初始化博客</span><br><span class="line"></span><br><span class="line">命令简写</span><br><span class="line">hexo n &quot;我的博客&quot; &#x3D;&#x3D; hexo new &quot;我的博客&quot; #新建文章</span><br><span class="line">hexo g &#x3D;&#x3D; hexo generate #生成</span><br><span class="line">hexo s &#x3D;&#x3D; hexo server #启动服务预览</span><br><span class="line">hexo d &#x3D;&#x3D; hexo deploy #部署</span><br><span class="line"></span><br><span class="line">hexo server #Hexo会监视文件变动并自动更新，无须重启服务器</span><br><span class="line">hexo server -s #静态模式</span><br><span class="line">hexo server -p 5000 #更改端口</span><br><span class="line">hexo server -i 192.168.1.1 #自定义 IP</span><br><span class="line">hexo clean #清除缓存，若是网页正常情况下可以忽略这条命令</span><br></pre></td></tr></table></figure></li>
-<li>安装Hexo部署git的插件：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<h3 id="文章参考"><a href="#文章参考" class="headerlink" title="文章参考"></a>文章参考</h3><blockquote><p>使用Github Pages建独立博客</p>
-<footer><strong>beiyuu</strong><cite><a target="_blank" rel="noopener" href="http://beiyuu.com/github-pages">beiyuu.com/github-pages</a></cite></footer></blockquote>
-<blockquote><p>GitHub+Hexo 搭建个人网站详细教程</p>
-<footer><strong>吴润</strong><cite><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26625249">zhuanlan.zhihu.com/p/26625249</a></cite></footer></blockquote>
- 
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>由于之前安装Hexo的时候就安装了，所以这里就不用安装了，在终端中输入 git version,我得到了版本号：git version 2.28.0.windows.1。<br>与github desktop的原理类似，这里也需要将git与github账号绑定，通过命令行的方式进行发布。 
+      <a class="article-more-link" href="/2020/08/29/Github-Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%EF%BC%88%E4%B8%80%EF%BC%89/"
+        >more...</a
+      >
+       
       <!-- reward -->
       
     </div>

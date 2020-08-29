@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-08-29T07:45:40.362Z</updated>
+  <updated>2020-08-29T07:54:05.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,16 +21,11 @@
     <link href="http://yoursite.com/2020/08/29/Github-Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <id>http://yoursite.com/2020/08/29/Github-Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%EF%BC%88%E4%B8%80%EF%BC%89/</id>
     <published>2020-08-29T05:06:48.000Z</published>
-    <updated>2020-08-29T07:45:40.362Z</updated>
+    <updated>2020-08-29T07:54:05.000Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Github创建个人仓库&quot;&gt;&lt;a href=&quot;#Github创建个人仓库&quot; class=&quot;headerlink&quot; title=&quot;Github创建个人仓库&quot;&gt;&lt;/a&gt;Github创建个人仓库&lt;/h2&gt;&lt;p&gt;新建Repositories，并将Repository</summary>
-        
-      
+    <summary type="html">&lt;h2 id=&quot;Github创建个人仓库&quot;&gt;&lt;a href=&quot;#Github创建个人仓库&quot; class=&quot;headerlink&quot; title=&quot;Github创建个人仓库&quot;&gt;&lt;/a&gt;Github创建个人仓库&lt;/h2&gt;&lt;p&gt;新建Repositories，并将Repository name设置为 name.github.io的格式。每个Github账号可以设置一个这种仓库，可以直接通过name.github.io访问页面。&lt;br&gt;我的仓库设置为circleolab.github.io。&lt;/p&gt;
+&lt;h2 id=&quot;安装Git&quot;&gt;&lt;a href=&quot;#安装Git&quot; class=&quot;headerlink&quot; title=&quot;安装Git&quot;&gt;&lt;/a&gt;安装Git&lt;/h2&gt;&lt;p&gt;由于之前安装Hexo的时候就安装了，所以这里就不用安装了，在终端中输入 git version,我得到了版本号：git version 2.28.0.windows.1。&lt;br&gt;与github desktop的原理类似，这里也需要将git与github账号绑定，通过命令行的方式进行发布。</summary>
     
     
     

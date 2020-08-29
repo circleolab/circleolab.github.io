@@ -4,7 +4,7 @@
     <title>Github+Hexo博客搭建 （一）</title>
     <url>/2020/08/29/Github-Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<h2 id="Github创建个人仓库"><a href="#Github创建个人仓库" class="headerlink" title="Github创建个人仓库"></a>Github创建个人仓库</h2><p>新建Repositories，并将Repository name设置为 name.github.io的格式。每个Github账号可以设置一个这种仓库，可以直接通过name.github.io访问页面。<br>我的仓库设置为circleolab.github.io。</p>
-<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>由于之前安装Hexo的时候就安装了，所以这里就不用安装了，在终端中输入 git version,我得到了版本号：git version 2.28.0.windows.1。<br>与github desktop的原理类似，这里也需要将git与github账号绑定，通过命令行的方式进行发布。</p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>由于之前安装Hexo的时候就安装了，所以这里就不用安装了，在终端中输入 git version,我得到了版本号：git version 2.28.0.windows.1。<br>与github desktop的原理类似，这里也需要将git与github账号绑定，通过命令行的方式进行发布。<a id="more"></a></p>
 <ol>
 <li><p>检查SSH Keys的配置（windows）<br>在Git Bash中，输入（如果是linux，直接在terminal中输入即可）：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;.sh 第一次创建会提示&quot;No such file or directory&quot;,若不是则执行第二步，是则跳过。</span><br></pre></td></tr></table></figure></li>
@@ -29,14 +29,14 @@
 </li>
 <li><p>设置用户信息<br>虽然已经将本地SSH链接到Github了，但还需要完善下个人信息。Git将会根据这些信息来记录提交，Github也将根据这些信息进行权限判断。<br>在Git Bash中：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name + &quot;circleolab&quot; &#x2F;&#x2F;Github的用户名（打&quot;&quot;)</span><br><span class="line">git config --global user.email + 注册Github时所用的邮箱（打&quot;&quot;)</span><br></pre></td></tr></table></figure>
-<p>至此已经将Git本地配置好了，建立了与Github之间的联系。</p>
+<p>至此已经将Git本地配置好了，建立了与Github之间的联系，后面将不会用到git bash了。</p>
 </li>
 </ol>
 <h2 id="将Hexo与Github关联起来"><a href="#将Hexo与Github关联起来" class="headerlink" title="将Hexo与Github关联起来"></a>将Hexo与Github关联起来</h2><ol>
 <li>打开博客下的_config.yml文件，在# Deployment项目下作如下修改，并保存：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: 这里填入你之前在GitHub上创建仓库的完整路径，记得加上 .git 如：https:&#x2F;&#x2F;github.com&#x2F;circleolab&#x2F;circleolab.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
 再温习一下Hexo的命令格式：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo -g #安装Hexo</span><br><span class="line">npm update hexo -g #升级</span><br><span class="line">hexo init #初始化博客</span><br><span class="line"></span><br><span class="line">命令简写</span><br><span class="line">hexo n &quot;我的博客&quot; &#x3D;&#x3D; hexo new &quot;我的博客&quot; #新建文章</span><br><span class="line">hexo g &#x3D;&#x3D; hexo generate #生成</span><br><span class="line">hexo s &#x3D;&#x3D; hexo server #启动服务预览</span><br><span class="line">hexo d &#x3D;&#x3D; hexo deploy #部署</span><br><span class="line"></span><br><span class="line">hexo server #Hexo会监视文件变动并自动更新，无须重启服务器</span><br><span class="line">hexo server -s #静态模式</span><br><span class="line">hexo server -p 5000 #更改端口</span><br><span class="line">hexo server -i 192.168.1.1 #自定义 IP</span><br><span class="line">hexo clean #清除缓存，若是网页正常情况下可以忽略这条命令</span><br></pre></td></tr></table></figure></li>
-<li>安装Hexo部署git的插件：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
+<li>安装Hexo部署git的插件：<br>在终端中输入：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
+<li>部署博客到github<br>在终端中输入：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo g </span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
@@ -96,40 +96,6 @@
       </tags>
   </entry>
   <entry>
-    <title>如何利用Hexo搭建博客 （三）</title>
-    <url>/2020/08/26/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-%EF%BC%88%E4%B8%89%EF%BC%89/</url>
-    <content><![CDATA[<p>安装主题，进入<a href="https://hexo.io/themes/">主题界面</a></p>
-<ul>
-<li>点击界面是进入预览模式</li>
-<li>点击name则进入github界面</li>
-<li>一般安装法则如下 <a id="more"></a><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https... themes&#x2F;themes_name 在博客根目录下运行</span><br><span class="line">theme: 中对应的主题更改为刚下的主题的文件夹名</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="Creating-a-Theme"><a href="#Creating-a-Theme" class="headerlink" title="Creating a Theme"></a>Creating a Theme</h2><ol>
-<li>在themes主题下建立新主题文件夹,如ga-theme</li>
-<li>在ga-theme下新建文件以及文件夹，languages,layout,scripts,source等文件夹以及config.yml配置文件。</li>
-</ol>
-<h3 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h3><ol>
-<li>在layout里新建layout.ejs</li>
-<li>在layout里新建index.ejs</li>
-<li>layout.ejs 中加入基本的html代码，layout.ejs是layout中优先级最高的</li>
-<li>新建page.ejs, post.ejs,tag.ejs等，进入相应界面，则会在优先级最高中的layout.ejs调用对应的ejs</li>
-</ol>
-<h3 id="partials"><a href="#partials" class="headerlink" title="partials"></a>partials</h3><p>暂时先对hexo 讨论到这儿，如果以后需要细化再做补充。</p>
-<p>采用了<a href="https://github.com/Shen-Yu/hexo-theme-ayer">Ayer主题</a><br>具体的插件有用到</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo-generator-index-pin-top 用于文章置顶</span><br><span class="line">hexo-blog-encrypt 用于文章加密</span><br><span class="line">hexo-tag-aplayer 用于播放音乐</span><br><span class="line">hexo-tag-dplayer 用于播放视频</span><br><span class="line">hexo-helper-live2d 二次元看板娘</span><br></pre></td></tr></table></figure>
-<p><a href="https://shen-yu.gitee.io/2019/ayer/#%E5%AE%89%E8%A3%85">帮助文档</a></p>
-<h3 id="图床的应用"><a href="#图床的应用" class="headerlink" title="图床的应用"></a>图床的应用</h3><p><a href="https://sm.ms/">SM.MS</a>、<a href="https://www.superbed.cn/">聚合图床</a></p>
-]]></content>
-      <categories>
-        <category>养成良好习惯</category>
-      </categories>
-      <tags>
-        <tag>hexo， 博客搭建</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>如何利用Hexo搭建博客 （二）</title>
     <url>/2020/08/26/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-%E4%BA%8C%EF%BC%89/</url>
     <content><![CDATA[<h2 id="基本生成"><a href="#基本生成" class="headerlink" title="基本生成"></a>基本生成</h2><p>hexo new draft “” 可以生成新草稿<br>hexo publush “” 即可发布，自动将_drafts中的草稿移动至_posts之中<br>hexo new page  “”是新生成页面，并非博客。需要自定义URL去访问</p>
@@ -170,24 +136,37 @@
       </tags>
   </entry>
   <entry>
-    <title>我的第一篇博客</title>
-    <url>/2020/08/26/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="开端"><a href="#开端" class="headerlink" title="开端"></a>开端</h2><p>2020年8月24日，终于折腾了许久，开始我得博客之旅。为什么要写博客？ <a id="more"></a><br>大致我想到有以下原因吧：</p>
-<ol>
-<li>博客可以更为细致、详尽、方便地总结归纳我所做的事；</li>
-<li>写博客可以倒逼自己是学懂了而不只是能用了；</li>
-<li>可以证明我自己在做事，我选了一条相对艰险的路，没有旁观者；</li>
-<li>我<strong>喜欢</strong>写博客。</li>
-</ol>
-<h2 id="想要的"><a href="#想要的" class="headerlink" title="想要的"></a>想要的</h2><ul>
-<li>我想要把博客绑定到自己的域名上<a href="https://circleolab.com/">未搭建好的网站</a>,或者绑定到我的<a href="https://circleolab.github.io/">github</a>上</li>
-<li>我想要记录我正在研究的东西，如电路的学习，机器人的制作，算法的研究，上位机的参透，一点一点，慢慢来。</li>
-<li>我想要把它搭成一座城</li>
+    <title>如何利用Hexo搭建博客 （三）</title>
+    <url>/2020/08/26/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-%EF%BC%88%E4%B8%89%EF%BC%89/</url>
+    <content><![CDATA[<p>安装主题，进入<a href="https://hexo.io/themes/">主题界面</a></p>
+<ul>
+<li>点击界面是进入预览模式</li>
+<li>点击name则进入github界面</li>
+<li>一般安装法则如下 <a id="more"></a><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https... themes&#x2F;themes_name 在博客根目录下运行</span><br><span class="line">theme: 中对应的主题更改为刚下的主题的文件夹名</span><br></pre></td></tr></table></figure>
+
+</li>
 </ul>
-<h2 id="希望的"><a href="#希望的" class="headerlink" title="希望的"></a>希望的</h2><p>我希望我慢慢的走，一直走，快乐的走下去。即使没人旁观，我也丝毫不孤独，因为我沉浸在求知的快乐中。</p>
+<h2 id="Creating-a-Theme"><a href="#Creating-a-Theme" class="headerlink" title="Creating a Theme"></a>Creating a Theme</h2><ol>
+<li>在themes主题下建立新主题文件夹,如ga-theme</li>
+<li>在ga-theme下新建文件以及文件夹，languages,layout,scripts,source等文件夹以及config.yml配置文件。</li>
+</ol>
+<h3 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h3><ol>
+<li>在layout里新建layout.ejs</li>
+<li>在layout里新建index.ejs</li>
+<li>layout.ejs 中加入基本的html代码，layout.ejs是layout中优先级最高的</li>
+<li>新建page.ejs, post.ejs,tag.ejs等，进入相应界面，则会在优先级最高中的layout.ejs调用对应的ejs</li>
+</ol>
+<h3 id="partials"><a href="#partials" class="headerlink" title="partials"></a>partials</h3><p>暂时先对hexo 讨论到这儿，如果以后需要细化再做补充。</p>
+<p>采用了<a href="https://github.com/Shen-Yu/hexo-theme-ayer">Ayer主题</a><br>具体的插件有用到</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo-generator-index-pin-top 用于文章置顶</span><br><span class="line">hexo-blog-encrypt 用于文章加密</span><br><span class="line">hexo-tag-aplayer 用于播放音乐</span><br><span class="line">hexo-tag-dplayer 用于播放视频</span><br><span class="line">hexo-helper-live2d 二次元看板娘</span><br></pre></td></tr></table></figure>
+<p><a href="https://shen-yu.gitee.io/2019/ayer/#%E5%AE%89%E8%A3%85">帮助文档</a></p>
+<h3 id="图床的应用"><a href="#图床的应用" class="headerlink" title="图床的应用"></a>图床的应用</h3><p><a href="https://sm.ms/">SM.MS</a>、<a href="https://www.superbed.cn/">聚合图床</a></p>
 ]]></content>
+      <categories>
+        <category>养成良好习惯</category>
+      </categories>
       <tags>
-        <tag>初端</tag>
+        <tag>hexo， 博客搭建</tag>
       </tags>
   </entry>
   <entry>
@@ -215,6 +194,27 @@
       </categories>
       <tags>
         <tag>hexo， 博客搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的第一篇博客</title>
+    <url>/2020/08/26/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="开端"><a href="#开端" class="headerlink" title="开端"></a>开端</h2><p>2020年8月24日，终于折腾了许久，开始我得博客之旅。为什么要写博客？ <a id="more"></a><br>大致我想到有以下原因吧：</p>
+<ol>
+<li>博客可以更为细致、详尽、方便地总结归纳我所做的事；</li>
+<li>写博客可以倒逼自己是学懂了而不只是能用了；</li>
+<li>可以证明我自己在做事，我选了一条相对艰险的路，没有旁观者；</li>
+<li>我<strong>喜欢</strong>写博客。</li>
+</ol>
+<h2 id="想要的"><a href="#想要的" class="headerlink" title="想要的"></a>想要的</h2><ul>
+<li>我想要把博客绑定到自己的域名上<a href="https://circleolab.com/">未搭建好的网站</a>,或者绑定到我的<a href="https://circleolab.github.io/">github</a>上</li>
+<li>我想要记录我正在研究的东西，如电路的学习，机器人的制作，算法的研究，上位机的参透，一点一点，慢慢来。</li>
+<li>我想要把它搭成一座城</li>
+</ul>
+<h2 id="希望的"><a href="#希望的" class="headerlink" title="希望的"></a>希望的</h2><p>我希望我慢慢的走，一直走，快乐的走下去。即使没人旁观，我也丝毫不孤独，因为我沉浸在求知的快乐中。</p>
+]]></content>
+      <tags>
+        <tag>初端</tag>
       </tags>
   </entry>
 </search>

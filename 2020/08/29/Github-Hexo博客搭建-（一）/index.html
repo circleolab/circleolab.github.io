@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">878</span>
+            <span class="post-count">912</span>
         </span>
     </span>
 
@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3 分钟</span>
+            <span class="post-count">4 分钟</span>
         </span>
     </span>
 </div>
@@ -100,7 +100,7 @@
     <div class="article-entry" itemprop="articleBody">
        
   <h2 id="Github创建个人仓库"><a href="#Github创建个人仓库" class="headerlink" title="Github创建个人仓库"></a>Github创建个人仓库</h2><p>新建Repositories，并将Repository name设置为 name.github.io的格式。每个Github账号可以设置一个这种仓库，可以直接通过name.github.io访问页面。<br>我的仓库设置为circleolab.github.io。</p>
-<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>由于之前安装Hexo的时候就安装了，所以这里就不用安装了，在终端中输入 git version,我得到了版本号：git version 2.28.0.windows.1。<br>与github desktop的原理类似，这里也需要将git与github账号绑定，通过命令行的方式进行发布。</p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>由于之前安装Hexo的时候就安装了，所以这里就不用安装了，在终端中输入 git version,我得到了版本号：git version 2.28.0.windows.1。<br>与github desktop的原理类似，这里也需要将git与github账号绑定，通过命令行的方式进行发布。<a id="more"></a></p>
 <ol>
 <li><p>检查SSH Keys的配置（windows）<br>在Git Bash中，输入（如果是linux，直接在terminal中输入即可）：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~&#x2F;.sh 第一次创建会提示&quot;No such file or directory&quot;,若不是则执行第二步，是则跳过。</span><br></pre></td></tr></table></figure></li>
@@ -125,14 +125,14 @@
 </li>
 <li><p>设置用户信息<br>虽然已经将本地SSH链接到Github了，但还需要完善下个人信息。Git将会根据这些信息来记录提交，Github也将根据这些信息进行权限判断。<br>在Git Bash中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name + &quot;circleolab&quot; &#x2F;&#x2F;Github的用户名（打&quot;&quot;)</span><br><span class="line">git config --global user.email + 注册Github时所用的邮箱（打&quot;&quot;)</span><br></pre></td></tr></table></figure>
-<p>至此已经将Git本地配置好了，建立了与Github之间的联系。</p>
+<p>至此已经将Git本地配置好了，建立了与Github之间的联系，后面将不会用到git bash了。</p>
 </li>
 </ol>
 <h2 id="将Hexo与Github关联起来"><a href="#将Hexo与Github关联起来" class="headerlink" title="将Hexo与Github关联起来"></a>将Hexo与Github关联起来</h2><ol>
 <li>打开博客下的_config.yml文件，在# Deployment项目下作如下修改，并保存：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: 这里填入你之前在GitHub上创建仓库的完整路径，记得加上 .git 如：https:&#x2F;&#x2F;github.com&#x2F;circleolab&#x2F;circleolab.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
 再温习一下Hexo的命令格式：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo -g #安装Hexo</span><br><span class="line">npm update hexo -g #升级</span><br><span class="line">hexo init #初始化博客</span><br><span class="line"></span><br><span class="line">命令简写</span><br><span class="line">hexo n &quot;我的博客&quot; &#x3D;&#x3D; hexo new &quot;我的博客&quot; #新建文章</span><br><span class="line">hexo g &#x3D;&#x3D; hexo generate #生成</span><br><span class="line">hexo s &#x3D;&#x3D; hexo server #启动服务预览</span><br><span class="line">hexo d &#x3D;&#x3D; hexo deploy #部署</span><br><span class="line"></span><br><span class="line">hexo server #Hexo会监视文件变动并自动更新，无须重启服务器</span><br><span class="line">hexo server -s #静态模式</span><br><span class="line">hexo server -p 5000 #更改端口</span><br><span class="line">hexo server -i 192.168.1.1 #自定义 IP</span><br><span class="line">hexo clean #清除缓存，若是网页正常情况下可以忽略这条命令</span><br></pre></td></tr></table></figure></li>
-<li>安装Hexo部署git的插件：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
+<li>安装Hexo部署git的插件：<br>在终端中输入：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure></li>
+<li>部署博客到github<br>在终端中输入：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo g </span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 
 </li>
 </ol>
