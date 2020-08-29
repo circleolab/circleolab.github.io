@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Github+Hexo博客搭建 （一）</title>
+    <url>/2020/08/29/Github-Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="Github创建个人仓库"><a href="#Github创建个人仓库" class="headerlink" title="Github创建个人仓库"></a>Github创建个人仓库</h2><p>新建Repositories，并将Repository name设置为 name.github.io的格式。每个Github账号可以设置一个这种仓库，可以直接通过name.github.io访问页面。<br>我的仓库设置为circleolab.github.io。</p>
+<h2 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h2><p>由于之前安装Hexo的时候就安装了，所以这里就不用安装了，在终端中输入 git version,我得到了版本号：git version 2.28.0.windows.1。<br>与github desktop的原理类似，这里也需要将git与github账号绑定，通过命令行的方式进行发布。</p>
+<ol>
+<li><p>检查SSH Keys的配置（windows）<br>在Git Bash中，输入（如果是linux，直接在terminal中输入即可）：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd ~&#x2F;.sh 第一次创建会提示&quot;No such file or directory&quot;,若不是则执行第二步，是则跳过。</span><br></pre></td></tr></table></figure></li>
+<li><p>备份和移除原来的ssh Key设置:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ls </span><br><span class="line">config	id_rsa	id_rsa.pub	known_hosts 参考的文章中是这么写的，未校验。</span><br><span class="line">mkdir key_backup</span><br><span class="line">cp id_rsa* key_backup</span><br><span class="line">rm id_rsa*</span><br></pre></td></tr></table></figure></li>
+<li><p>生成新的SSH Key:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C 20circle22@gmail.com</span><br><span class="line">Generating public&#x2F;private rsa key pair.</span><br><span class="line">Enter file in which to save the key (&#x2F;c&#x2F;Users&#x2F;circl&#x2F;.ssh&#x2F;id_rsa) 连续按3次enter.</span><br></pre></td></tr></table></figure>
+<p>出现了下图，表示本地生成SSH密钥成功。<br><img src="https://i.loli.net/2020/08/29/ipDRO9yKsM7YgoH.png" alt="捕获2.PNG"></p>
+</li>
+<li><p>添加SSH Key到 Github<br>本地配置好了SSH key后，需要将其添加到Github上，以完成配置。</p>
+<ul>
+<li>本地id_rsa.pub文件用txt打开，复制。（我的文件目录为：/c/User/circl/.ssh/id_rsa)</li>
+<li>网页登陆Github，Account→ Settings→ SSH and GPG keys→ New SSH Key,设置好title,粘贴key → Add SSH key</li>
+</ul>
+</li>
+<li><p>测试连接<br>在Git Bash中,输入以下命令，无需更改。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh -T git@GitHub.com</span><br></pre></td></tr></table></figure>
+<p>然后可能会回复：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">The authenticity of host &#39;github.com (13.250.177.223)&#39; can&#39;t be established.</span><br><span class="line">RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.</span><br><span class="line">Are you sure you want to continue connecting (yes&#x2F;no&#x2F;[fingerprint])? yes</span><br><span class="line">Warning: Permanently added &#39;github.com,13.250.177.223&#39; (RSA) to the list of known hosts.</span><br></pre></td></tr></table></figure>
+<p>输入yes,后如果看到下面回复就成功了：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Hi circleolab! You&#39;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置用户信息<br>虽然已经将本地SSH链接到Github了，但还需要完善下个人信息。Git将会根据这些信息来记录提交，Github也将根据这些信息进行权限判断。<br>在Git Bash中：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name + &quot;circleolab&quot; &#x2F;&#x2F;Github的用户名（打&quot;&quot;)</span><br><span class="line">git config --global user.email + 注册Github时所用的邮箱（打&quot;&quot;)</span><br></pre></td></tr></table></figure>
+<p>至此已经将Git本地配置好了，建立了与Github之间的联系。</p>
+</li>
+</ol>
+<h2 id="将Hexo与Github关联起来"><a href="#将Hexo与Github关联起来" class="headerlink" title="将Hexo与Github关联起来"></a>将Hexo与Github关联起来</h2><ol>
+<li>打开博客下的_config.yml文件，在# Deployment项目下作如下修改，并保存：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: 这里填入你之前在GitHub上创建仓库的完整路径，记得加上 .git 如：https:&#x2F;&#x2F;github.com&#x2F;circleolab&#x2F;circleolab.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
+再温习一下Hexo的命令格式：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo -g #安装Hexo</span><br><span class="line">npm update hexo -g #升级</span><br><span class="line">hexo init #初始化博客</span><br><span class="line"></span><br><span class="line">命令简写</span><br><span class="line">hexo n &quot;我的博客&quot; &#x3D;&#x3D; hexo new &quot;我的博客&quot; #新建文章</span><br><span class="line">hexo g &#x3D;&#x3D; hexo generate #生成</span><br><span class="line">hexo s &#x3D;&#x3D; hexo server #启动服务预览</span><br><span class="line">hexo d &#x3D;&#x3D; hexo deploy #部署</span><br><span class="line"></span><br><span class="line">hexo server #Hexo会监视文件变动并自动更新，无须重启服务器</span><br><span class="line">hexo server -s #静态模式</span><br><span class="line">hexo server -p 5000 #更改端口</span><br><span class="line">hexo server -i 192.168.1.1 #自定义 IP</span><br><span class="line">hexo clean #清除缓存，若是网页正常情况下可以忽略这条命令</span><br></pre></td></tr></table></figure></li>
+<li>安装Hexo部署git的插件：<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<h3 id="文章参考"><a href="#文章参考" class="headerlink" title="文章参考"></a>文章参考</h3><blockquote><p>使用Github Pages建独立博客</p>
+<footer><strong>beiyuu</strong><cite><a href="http://beiyuu.com/github-pages">beiyuu.com/github-pages</a></cite></footer></blockquote>
+<blockquote><p>GitHub+Hexo 搭建个人网站详细教程</p>
+<footer><strong>吴润</strong><cite><a href="https://zhuanlan.zhihu.com/p/26625249">zhuanlan.zhihu.com/p/26625249</a></cite></footer></blockquote>
+]]></content>
+      <categories>
+        <category>养成良好习惯</category>
+      </categories>
+      <tags>
+        <tag>Github</tag>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Github 仓库管理基本操作</title>
+    <url>/2020/08/28/Github-%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<p>本博客参照了<a href="https://docs.github.com/en/github/getting-started-with-github">Github Docs</a>，主要总结Github代码托管的基本方式。</p>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="设置Git"><a href="#设置Git" class="headerlink" title="设置Git"></a>设置Git</h3><p>GitHub的核心是一个名为Git的开源版本控制系统（VCS），负责计算机本地发生的与GitHub相关的所有事情。<br>安装<a href="https://desktop.github.com/">Github Desktop</a>,<a href="https://docs.github.com/en/desktop/installing-and-configuring-github-desktop">安装与配置说明</a></p>
+<h4 id="Github-Desktop的安装与配置"><a href="#Github-Desktop的安装与配置" class="headerlink" title="Github Desktop的安装与配置"></a>Github Desktop的安装与配置</h4><p>了解GitHub桌面并快速创建您的第一个存储库<a id="more"></a></p>
+<h5 id="GitHub桌面入门"><a href="#GitHub桌面入门" class="headerlink" title="GitHub桌面入门"></a>GitHub桌面入门</h5><p>了解如何设置，认证和配置GitHub Desktop，以使可以直接从本地计算机为项目做出贡献。<br>GitHub Desktop是一个应用程序，可让您使用GUI而不是命令行或Web浏览器与GitHub进行交互。您可以使用GitHub桌面从桌面完成大多数Git命令，并直观可见。You can <strong>push to</strong>, <strong>pull from</strong>, and <strong>clone remote repositories</strong> with GitHub Desktop, and use collaborative tools such as <strong>attributing commits</strong> and creating <strong>pull requests</strong>.</p>
+<p>本指南将通过设置应用程序，认证您的帐户，配置基本设置以及介绍使用GitHub Desktop管理项目的基础知识，帮助您开始使用GitHub Desktop。在完成本指南之后，您将能够使用GitHub Desktop在项目上进行协作并连接到远程存储库。</p>
+<p>在开始使用GitHub Desktop之前，对Git和GitHub进行基本了解可能会有所帮助。有关更多信息，请参见以下文章。</p>
+<ul>
+<li><a href="https://docs.github.com/cn/github/using-git/learning-about-git">了解Git</a></li>
+<li><a href="https://docs.github.com/cn/github/getting-started-with-github/learning-about-github">了解GitHub</a><br><a href="https://github.com/desktop/desktop">Github</a>本身也是一个开源项目。</li>
+</ul>
+<p>一、安装与验证<br>安装并登录Github账号</p>
+<p>二、配置和自定义化Github Desktop<br>您可以在GitHub或GitHub Enterprise上连接或删除帐户，选择默认的文本编辑器或shell，编辑Git配置，更改GitHub Desktop的外观，自定义系统对话框，并在GitHub Desktop Options窗口中设置隐私首选项。 有关更多信息，请参阅<a href="https://docs.github.com/cn/desktop/installing-and-configuring-github-desktop/configuring-basic-settings">“配置基本设置”</a>。</p>
+<p>三、使用Github Desktop贡献项目<br>安装，认证和配置应用程序之后，您就可以开始使用GitHub Desktop了。您可以创建，添加或克隆存储库，并使用Gi​​tHub Desktop管理对存储库的贡献。</p>
+<p><strong>Creating, adding, and cloning repositories</strong><br>*<a href="https://docs.github.com/cn/desktop/installing-and-configuring-github-desktop/creating-your-first-repository-using-github-desktop">使用Github Desktop创建第一个仓库</a><br>1.Click Create a tutorial repository and clone it.<br>2.Follow the prompts in the tutorial to install a text editor, create a branch, edit a file, make a commit, publish to GitHub, and open a pull request.<br>或者<br>1.Click Create a New Repository on your Hard Drive….</p>
+<ul>
+<li>“名称”定义本地和GitHub上存储库的名称。</li>
+<li>“描述”是一个可选字段，可用于提供有关存储库用途的更多信息。</li>
+<li>本地路径”设置存储库在计算机上的位置。 默认情况下，GitHub Desktop在Documents文件夹内创建一个GitHub文件夹来存储您的存储库，但是您可以选择计算机上的任何位置。 您的新存储库将是所选位置内的文件夹。 例如，如果您将存储库命名为Tutorial，则会在为本地路径选择的文件夹内创建一个名为Tutorial的文件夹。 下次创建或克隆新存储库时，GitHub Desktop会记住您选择的位置。</li>
+<li>使用README初始化此存储库会顺便初始化一个README.md文件。 README文件可帮助人们了解您的项目目的，因此我们建议选择此项目并在其中添加有用的信息。 当有人在GitHub上访问您的存储库时，README是他们了解您的项目时会首先看到的内容。 </li>
+<li>The Git ignore drop-down menu lets you add a custom file to ignore specific files in your local repository that you don’t want to store in version control. If there’s a specific language or framework that you’ll be using, you can select an option from the available list. If you’re just getting started, feel free to skip this selection. For more information, see “Ignoring files.”</li>
+<li>使用许可证下拉菜单，您可以将开放源代码许可证添加到存储库中的LICENSE文件中。 您无需担心立即添加许可证。 有关可用的开源许可证以及如何将其添加到存储库中的更多信息，请参阅<a href="https://docs.github.com/cn/github/creating-cloning-and-archiving-repositories/licensing-a-repository">“许可存储库”</a>。</li>
+</ul>
+<p>2.Click Create repository.</p>
+<p><strong>Github的界面介绍</strong></p>
+<ul>
+<li>Current repository shows the name of the repository you’re working on. You can click Current repository to switch to a different repository in GitHub Desktop.</li>
+<li>Current branch shows the name of the branch you’re working on. You can click Current branch to view all the branches in your repository, switch to a different branch, or create a new branch. Once you create pull requests in your repository, you can also view these by clicking on Current branch.</li>
+</ul>
+<p>注意，新建空文件夹是不能更新的。<br>如果新增了更改，是需要备注更改信息以及详细信息，才能提交的。</p>
+<p>以后如有需要可以，再详细了解优化一下，同时建立多版本的branch方法，同时保留原始的master分支。目前想法是</p>
+<p>1.假设目前已经有一个master分支<br>2.clone目前的master分支到另一个文件夹.<br>3.提交新branch，不merge. 好像可行。</p>
+]]></content>
+      <categories>
+        <category>Github仓库管理</category>
+      </categories>
+      <tags>
+        <tag>Github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何利用Hexo搭建博客 （三）</title>
+    <url>/2020/08/26/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-%EF%BC%88%E4%B8%89%EF%BC%89/</url>
+    <content><![CDATA[<p>安装主题，进入<a href="https://hexo.io/themes/">主题界面</a></p>
+<ul>
+<li>点击界面是进入预览模式</li>
+<li>点击name则进入github界面</li>
+<li>一般安装法则如下 <a id="more"></a><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https... themes&#x2F;themes_name 在博客根目录下运行</span><br><span class="line">theme: 中对应的主题更改为刚下的主题的文件夹名</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Creating-a-Theme"><a href="#Creating-a-Theme" class="headerlink" title="Creating a Theme"></a>Creating a Theme</h2><ol>
+<li>在themes主题下建立新主题文件夹,如ga-theme</li>
+<li>在ga-theme下新建文件以及文件夹，languages,layout,scripts,source等文件夹以及config.yml配置文件。</li>
+</ol>
+<h3 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h3><ol>
+<li>在layout里新建layout.ejs</li>
+<li>在layout里新建index.ejs</li>
+<li>layout.ejs 中加入基本的html代码，layout.ejs是layout中优先级最高的</li>
+<li>新建page.ejs, post.ejs,tag.ejs等，进入相应界面，则会在优先级最高中的layout.ejs调用对应的ejs</li>
+</ol>
+<h3 id="partials"><a href="#partials" class="headerlink" title="partials"></a>partials</h3><p>暂时先对hexo 讨论到这儿，如果以后需要细化再做补充。</p>
+<p>采用了<a href="https://github.com/Shen-Yu/hexo-theme-ayer">Ayer主题</a><br>具体的插件有用到</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo-generator-index-pin-top 用于文章置顶</span><br><span class="line">hexo-blog-encrypt 用于文章加密</span><br><span class="line">hexo-tag-aplayer 用于播放音乐</span><br><span class="line">hexo-tag-dplayer 用于播放视频</span><br><span class="line">hexo-helper-live2d 二次元看板娘</span><br></pre></td></tr></table></figure>
+<p><a href="https://shen-yu.gitee.io/2019/ayer/#%E5%AE%89%E8%A3%85">帮助文档</a></p>
+<h3 id="图床的应用"><a href="#图床的应用" class="headerlink" title="图床的应用"></a>图床的应用</h3><p><a href="https://sm.ms/">SM.MS</a>、<a href="https://www.superbed.cn/">聚合图床</a></p>
+]]></content>
+      <categories>
+        <category>养成良好习惯</category>
+      </categories>
+      <tags>
+        <tag>hexo， 博客搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何利用Hexo搭建博客 （二）</title>
+    <url>/2020/08/26/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="基本生成"><a href="#基本生成" class="headerlink" title="基本生成"></a>基本生成</h2><p>hexo new draft “” 可以生成新草稿<br>hexo publush “” 即可发布，自动将_drafts中的草稿移动至_posts之中<br>hexo new page  “”是新生成页面，并非博客。需要自定义URL去访问</p>
+<h2 id="Front-Matter的使用"><a href="#Front-Matter的使用" class="headerlink" title="Front Matter的使用"></a>Front Matter的使用</h2><a id="more"></a>
+<p>front matter中</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 如何利用Hexo搭建博客 （二）</span><br><span class="line">date: 2020-08-26 15:57:06</span><br><span class="line">tags: [hexo， 博客搭建]</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>即可显示标签云,注意hexo不能识别中文标点。</p>
+<h2 id="scaffolds模板的使用"><a href="#scaffolds模板的使用" class="headerlink" title="scaffolds模板的使用"></a>scaffolds模板的使用</h2><p>在对应模板增加内容，生成对应的文章时就会自动带有模板的样式<br>如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line">tags:</span><br><span class="line">author: &quot;Circle&quot;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>可以在scaffolds文件夹下新建layout,自定义layout的名字如：giraffe，写入自己的格式，然后生成时<br>用<br>hexo new giraffe “”即可，默认是post。</p>
+<h2 id="tags-and-Categories"><a href="#tags-and-Categories" class="headerlink" title="tags and Categories"></a>tags and Categories</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">在front matter中，tags标签可以这样写</span><br><span class="line">tags: [tag1, tag2, tag3]</span><br></pre></td></tr></table></figure>
+<p>分类则可以</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- [cat1, cat1.1] cat1.1则表示cat1分类下的子类1.1</span><br><span class="line">- [cat2]</span><br><span class="line">- [cat3]</span><br></pre></td></tr></table></figure>
+
+<h2 id="Tag-Plugins"><a href="#Tag-Plugins" class="headerlink" title="Tag Plugins"></a>Tag Plugins</h2><ul>
+<li><strong>Code Block</strong><br>书写格式如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% codeblock %&#125;</span><br><span class="line">alert(&quot;Hello World&quot;);</span><br><span class="line">var myVar &#x3D; &quot;Hello World&quot;;</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">alert(&quot;Hello World&quot;);</span><br><span class="line">var myVar &#x3D; &quot;Hello World&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>如果增加了对应的语言名，则解析为HTML时会有不同的高亮方式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% codeblock lang:javascript %&#125;</span><br><span class="line">alert(&quot;Hello World&quot;);</span><br><span class="line">var myVar &#x3D; &quot;Hello World&quot;;</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
+<p>效果：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">alert(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> myVar = <span class="string">&quot;Hello World&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>详细可以看<a href="https://hexo.io/zh-cn/docs/tag-plugins.html">官网</a></p>
+<h2 id="Asset-Folders"><a href="#Asset-Folders" class="headerlink" title="Asset Folders"></a>Asset Folders</h2><p>1.去博客根目录下的_config.yml中修改post_asset_folder的值为true。<br>2.然后将图片放在自动生成的文件夹下，然后在md文件中引用 如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% asset_path slug %&#125;</span><br><span class="line">&#123;% asset_img 12.jpg [title] %&#125; 不知为何，标题未生效</span><br><span class="line">&#123;% asset_link slug [title] %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>目前测试过，上面方法可以用<br>还有：<br>1.source文件下建立images文件夹，然后利用markdown语法写，如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">![][&#x2F;images&#x2F;3.png]</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>养成良好习惯</category>
+      </categories>
+      <tags>
+        <tag>hexo， 博客搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的第一篇博客</title>
+    <url>/2020/08/26/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="开端"><a href="#开端" class="headerlink" title="开端"></a>开端</h2><p>2020年8月24日，终于折腾了许久，开始我得博客之旅。为什么要写博客？ <a id="more"></a><br>大致我想到有以下原因吧：</p>
+<ol>
+<li>博客可以更为细致、详尽、方便地总结归纳我所做的事；</li>
+<li>写博客可以倒逼自己是学懂了而不只是能用了；</li>
+<li>可以证明我自己在做事，我选了一条相对艰险的路，没有旁观者；</li>
+<li>我<strong>喜欢</strong>写博客。</li>
+</ol>
+<h2 id="想要的"><a href="#想要的" class="headerlink" title="想要的"></a>想要的</h2><ul>
+<li>我想要把博客绑定到自己的域名上<a href="https://circleolab.com/">未搭建好的网站</a>,或者绑定到我的<a href="https://circleolab.github.io/">github</a>上</li>
+<li>我想要记录我正在研究的东西，如电路的学习，机器人的制作，算法的研究，上位机的参透，一点一点，慢慢来。</li>
+<li>我想要把它搭成一座城</li>
+</ul>
+<h2 id="希望的"><a href="#希望的" class="headerlink" title="希望的"></a>希望的</h2><p>我希望我慢慢的走，一直走，快乐的走下去。即使没人旁观，我也丝毫不孤独，因为我沉浸在求知的快乐中。</p>
+]]></content>
+      <tags>
+        <tag>初端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何利用Hexo搭建博客（一）</title>
+    <url>/2020/08/26/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="目前用到的"><a href="#目前用到的" class="headerlink" title="目前用到的"></a>目前用到的</h2><p>目前主要是用到了 Node.js , git, 以及hexo；之所以没有用jykell是觉得它在windows上用好像不太方便，因为Ubuntu不方便联网，所以先找一个方法先记录下来过程。以后如果有闲情逸致，可以鸟枪换炮。<br>Node.js 主要就直接进官网下载安装就行了，注意默认加入到path<br>git 也很好安装，直接默认安装就好了。<br>hexo 需要在前两个安装好后才能安装，可以先用cmd 中的 <a id="more"></a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ node -v </span><br><span class="line"></span><br><span class="line">$ git version</span><br></pre></td></tr></table></figure>
+<p>验证是否已经安装好。<br>然后利用hexo 官网中的命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>在cmd或者windows powershell中安装即可，powershell第一次可能报错，在windows设置中设置以下powershell的允许权限就可以了。<br>然后就安装好了</p>
+<h2 id="hexo的主要使用命令"><a href="#hexo的主要使用命令" class="headerlink" title="hexo的主要使用命令"></a>hexo的主要使用命令</h2><h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><p>安装好hexo后输入如下命令，建立目标文件夹：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<p>如果初始化后，可以看到以下结构的目录：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">|--- _config.yml        站点的配置文件，可以修改配置</span><br><span class="line">|--- package.json       安装数据，显示站点名字及属性以及依赖项</span><br><span class="line">|--- scaffolds          母版，创建新博客时的依据</span><br><span class="line">|--- <span class="built_in">source</span>             <span class="built_in">source</span>文件夹中除了_posts文件夹以外会自动忽略，md，html文件会自动解析并放置于public文件中</span><br><span class="line">|     |--- _drafts      初次建立并不存在，可以单独创建</span><br><span class="line">|     |--- _posts</span><br><span class="line">|___ themes             主题文件夹，hexo将结合主题和内容创建静态网页</span><br></pre></td></tr></table></figure>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>配置文件可以看<a href="https://hexo.io/docs/configuration">官网页面</a>,或<a href="https://hexo.io/zh-cn/docs/configuration.html">中文页面</a><br>注意几点</p>
+<ul>
+<li>language 大陆地区语言一般有 zh-Hans, zh-CN。</li>
+<li>时区一般有 Asia/Shanghai<h3 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h3></li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo init [folder]</span><br><span class="line">$ hexo new [layout] <span class="string">&quot;title&quot;</span>  layout在配置文件中的默认属性是post</span><br><span class="line">  -p 自定义新文章的路径，如 hexo new page --path about/me <span class="string">&quot;About me&quot;</span>注意必须写文章名字；</span><br><span class="line">  -r 替换同名文章</span><br><span class="line">  -s 自定义post的URL</span><br><span class="line"></span><br><span class="line">$ hexo generate缩写为g</span><br><span class="line">$ hexo server 创建本地服务器</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>等</p>
+]]></content>
+      <categories>
+        <category>养成良好习惯</category>
+      </categories>
+      <tags>
+        <tag>hexo， 博客搭建</tag>
+      </tags>
+  </entry>
+</search>

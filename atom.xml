@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Circlelab联合实验室</title>
+  
+  
+  <link href="http://yoursite.com/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2020-08-29T07:45:40.362Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Circle</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Github+Hexo博客搭建 （一）</title>
+    <link href="http://yoursite.com/2020/08/29/Github-Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://yoursite.com/2020/08/29/Github-Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <published>2020-08-29T05:06:48.000Z</published>
+    <updated>2020-08-29T07:45:40.362Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Github创建个人仓库&quot;&gt;&lt;a href=&quot;#Github创建个人仓库&quot; class=&quot;headerlink&quot; title=&quot;Github创建个人仓库&quot;&gt;&lt;/a&gt;Github创建个人仓库&lt;/h2&gt;&lt;p&gt;新建Repositories，并将Repository</summary>
+        
+      
+    
+    
+    
+    <category term="养成良好习惯" scheme="http://yoursite.com/categories/%E5%85%BB%E6%88%90%E8%89%AF%E5%A5%BD%E4%B9%A0%E6%83%AF/"/>
+    
+    
+    <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
+    
+    <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Github 仓库管理基本操作</title>
+    <link href="http://yoursite.com/2020/08/28/Github-%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    <id>http://yoursite.com/2020/08/28/Github-%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</id>
+    <published>2020-08-28T11:35:17.000Z</published>
+    <updated>2020-08-28T13:29:49.911Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本博客参照了&lt;a href=&quot;https://docs.github.com/en/github/getting-started-with-github&quot;&gt;Github Docs&lt;/a&gt;，主要总结Github代码托管的基本方式。&lt;/p&gt;
+&lt;h2 id=&quot;快速开始&quot;&gt;&lt;a href=&quot;#快速开始&quot; class=&quot;headerlink&quot; title=&quot;快速开始&quot;&gt;&lt;/a&gt;快速开始&lt;/h2&gt;&lt;h3 id=&quot;设置Git&quot;&gt;&lt;a href=&quot;#设置Git&quot; class=&quot;headerlink&quot; title=&quot;设置Git&quot;&gt;&lt;/a&gt;设置Git&lt;/h3&gt;&lt;p&gt;GitHub的核心是一个名为Git的开源版本控制系统（VCS），负责计算机本地发生的与GitHub相关的所有事情。&lt;br&gt;安装&lt;a href=&quot;https://desktop.github.com/&quot;&gt;Github Desktop&lt;/a&gt;,&lt;a href=&quot;https://docs.github.com/en/desktop/installing-and-configuring-github-desktop&quot;&gt;安装与配置说明&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;Github-Desktop的安装与配置&quot;&gt;&lt;a href=&quot;#Github-Desktop的安装与配置&quot; class=&quot;headerlink&quot; title=&quot;Github Desktop的安装与配置&quot;&gt;&lt;/a&gt;Github Desktop的安装与配置&lt;/h4&gt;&lt;p&gt;了解GitHub桌面并快速创建您的第一个存储库</summary>
+    
+    
+    
+    <category term="Github仓库管理" scheme="http://yoursite.com/categories/Github%E4%BB%93%E5%BA%93%E7%AE%A1%E7%90%86/"/>
+    
+    
+    <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何利用Hexo搭建博客 （三）</title>
+    <link href="http://yoursite.com/2020/08/26/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-%EF%BC%88%E4%B8%89%EF%BC%89/"/>
+    <id>http://yoursite.com/2020/08/26/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-%EF%BC%88%E4%B8%89%EF%BC%89/</id>
+    <published>2020-08-26T12:26:27.000Z</published>
+    <updated>2020-08-28T10:51:55.071Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;安装主题，进入&lt;a href=&quot;https://hexo.io/themes/&quot;&gt;主题界面&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;点击界面是进入预览模式&lt;/li&gt;
+&lt;li&gt;点击name则进入github界面&lt;/li&gt;
+&lt;li&gt;一般安装法则如下</summary>
+    
+    
+    
+    <category term="养成良好习惯" scheme="http://yoursite.com/categories/%E5%85%BB%E6%88%90%E8%89%AF%E5%A5%BD%E4%B9%A0%E6%83%AF/"/>
+    
+    
+    <category term="hexo， 博客搭建" scheme="http://yoursite.com/tags/hexo%EF%BC%8C-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何利用Hexo搭建博客 （二）</title>
+    <link href="http://yoursite.com/2020/08/26/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-%E4%BA%8C%EF%BC%89/"/>
+    <id>http://yoursite.com/2020/08/26/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-%E4%BA%8C%EF%BC%89/</id>
+    <published>2020-08-26T07:57:06.000Z</published>
+    <updated>2020-08-27T12:09:16.445Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;基本生成&quot;&gt;&lt;a href=&quot;#基本生成&quot; class=&quot;headerlink&quot; title=&quot;基本生成&quot;&gt;&lt;/a&gt;基本生成&lt;/h2&gt;&lt;p&gt;hexo new draft “” 可以生成新草稿&lt;br&gt;hexo publush “” 即可发布，自动将_drafts中的草稿移动至_posts之中&lt;br&gt;hexo new page  “”是新生成页面，并非博客。需要自定义URL去访问&lt;/p&gt;
+&lt;h2 id=&quot;Front-Matter的使用&quot;&gt;&lt;a href=&quot;#Front-Matter的使用&quot; class=&quot;headerlink&quot; title=&quot;Front Matter的使用&quot;&gt;&lt;/a&gt;Front Matter的使用&lt;/h2&gt;</summary>
+    
+    
+    
+    <category term="养成良好习惯" scheme="http://yoursite.com/categories/%E5%85%BB%E6%88%90%E8%89%AF%E5%A5%BD%E4%B9%A0%E6%83%AF/"/>
+    
+    
+    <category term="hexo， 博客搭建" scheme="http://yoursite.com/tags/hexo%EF%BC%8C-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何利用Hexo搭建博客（一）</title>
+    <link href="http://yoursite.com/2020/08/26/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://yoursite.com/2020/08/26/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%EF%BC%88%E4%B8%80%EF%BC%89/</id>
+    <published>2020-08-26T07:56:18.000Z</published>
+    <updated>2020-08-27T11:08:46.702Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;目前用到的&quot;&gt;&lt;a href=&quot;#目前用到的&quot; class=&quot;headerlink&quot; title=&quot;目前用到的&quot;&gt;&lt;/a&gt;目前用到的&lt;/h2&gt;&lt;p&gt;目前主要是用到了 Node.js , git, 以及hexo；之所以没有用jykell是觉得它在windows上用好像不太方便，因为Ubuntu不方便联网，所以先找一个方法先记录下来过程。以后如果有闲情逸致，可以鸟枪换炮。&lt;br&gt;Node.js 主要就直接进官网下载安装就行了，注意默认加入到path&lt;br&gt;git 也很好安装，直接默认安装就好了。&lt;br&gt;hexo 需要在前两个安装好后才能安装，可以先用cmd 中的</summary>
+    
+    
+    
+    <category term="养成良好习惯" scheme="http://yoursite.com/categories/%E5%85%BB%E6%88%90%E8%89%AF%E5%A5%BD%E4%B9%A0%E6%83%AF/"/>
+    
+    
+    <category term="hexo， 博客搭建" scheme="http://yoursite.com/tags/hexo%EF%BC%8C-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的第一篇博客</title>
+    <link href="http://yoursite.com/2020/08/26/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2020/08/26/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</id>
+    <published>2020-08-26T07:53:27.000Z</published>
+    <updated>2020-08-27T11:21:42.506Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;开端&quot;&gt;&lt;a href=&quot;#开端&quot; class=&quot;headerlink&quot; title=&quot;开端&quot;&gt;&lt;/a&gt;开端&lt;/h2&gt;&lt;p&gt;2020年8月24日，终于折腾了许久，开始我得博客之旅。为什么要写博客？</summary>
+    
+    
+    
+    
+    <category term="初端" scheme="http://yoursite.com/tags/%E5%88%9D%E7%AB%AF/"/>
+    
+  </entry>
+  
+</feed>
